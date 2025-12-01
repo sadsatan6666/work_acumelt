@@ -1,0 +1,101 @@
+Welcome to the team at Acumelt! It is completely normal to feel overwhelmed on your first day, especially in a manufacturing environment (a foundry) if you are coming from a standard office IT background. Factory floor IT (often called OT or Operational Technology) has its own language.
+
+Based on the website details you provided and what the Plant Head told you, I have "translated" his request into standard IT terms and created a plan for you.
+
+Part 1: Decoding the "Shop Floor Lingo"
+
+Here is what the Plant Head actually meant:
+
+"PLU" → He meant PLC (Programmable Logic Controller).
+
+What it is: This is the industrial computer "brain" inside the machine. It doesn't look like a PC; it looks like a box with blinking lights.
+
+Your Job: You usually don't program the PLC. Your job is to connect the HMI (Human Machine Interface)—which is often a Windows Touchscreen PC attached to the machine—to the network so the PLC data can be sent to the server.
+
+"Softdrive" → He likely meant "Soft Starter" or "Variable Frequency Drive (VFD)".
+
+What it is: A device that controls the electric motors (making them start softly instead of jerking).
+
+Your Job: Be careful. This is usually an Electrical Engineer's job, not IT. However, modern drives have Ethernet ports to send data (like "Motor Temperature" or "Speed") to the server.
+
+Alternative: He might have said "Shared Drive" (mapping a network folder so the machine can save reports to the server). Ask for clarification here (see Part 3).
+
+"Remote" → He wants Remote Monitoring / Remote Desktop.
+
+The Goal: The Plant Head wants to sit in his office and see the screen of the Sand Plant machine on his own computer without walking to the factory floor.
+
+Your Job: You need to install software like VNC (RealVNC/UltraVNC), AnyDesk, or enable Windows Remote Desktop (RDP) on the machine's computer.
+
+Part 2: Identifying the Machines (From the Website)
+
+Based on the text you pasted, here are the two machines he is likely talking about:
+
+Machine 1: The Sand Plant
+
+Website Ref: Sand Plant (Multicooler, Sand Mixer, Online Sand Testing).
+
+Why connect it? The text mentions "Online Sand testing" and "Automatic batch correction." The boss wants to save the data reports of the sand quality (Moisture, Permeability, Strength) to the main server for quality control.
+
+Machine 2: The Sinto or The Autopour
+
+Website Ref: Molding (Sinto FBO III) or Pouring System (Shree Shakti Smart Autopour).
+
+Why connect it? The text says the Pouring system is a "closed loop with Sinto." These are high-tech automated machines. They generate production data (how many molds were made, how much iron was poured) that needs to go to the server.
+
+Part 3: Your Step-by-Step Action Plan
+
+Here is how you handle this task professionally:
+
+Step 1: Physical Survey (Take a notepad)
+
+Go to the "Sand Plant" area. Look for the control panel.
+
+Is there a standard Windows PC inside the cabinet? Or is it a proprietary touch screen?
+
+Look for an Ethernet Port (looks like a standard LAN jack).
+
+Cable Run: Check the distance from the machine to the nearest Network Switch or Wall Socket. You will likely need to run a CAT6 Ethernet cable from the machine to your network switch.
+
+Step 2: Network Configuration (The IT Part)
+
+Once you plug the LAN cable in, you cannot just leave it. Industrial machines usually need Static IPs, not DHCP (Dynamic IPs).
+
+Ask the machine operator or check the manual for the machine's current IP settings.
+
+Assign a Static IP from your company’s range (e.g., 192.168.1.50) to the machine's PC.
+
+Ping the machine from the Server to ensure they can see each other.
+
+Step 3: Setting up "Remote"
+
+The Plant Head wants to see the machine status.
+
+If it's a Windows PC: Install VNC Server on the machine. Install VNC Viewer on the Plant Head’s laptop.
+
+If it's a PLC (Non-Windows): You might need the vendor's specific software (SCADA) installed on the Plant Head's PC to "talk" to the machine.
+
+Step 4: Clarify the "Softdrive"
+
+Go back to the Plant Head with your notebook and ask this specific question:
+
+"Sir, regarding the 'Softdrive' you mentioned—did you mean you want a Shared Network Drive (a folder on the server to save machine data), or were you talking about the Soft Starter motor controllers?"
+
+If Shared Drive: You map a drive (e.g., Z: drive) on the machine's PC to the Server.
+
+If Soft Starter: Tell him you will provide the LAN connection, but the Electrical team needs to configure the drive parameters.
+
+Summary for your Boss (To make you look good)
+
+When you report back to him, say this:
+
+"I have reviewed the specs for the Sand Plant and the Sinto/Pouring lines.
+
+I am preparing the LAN cabling to connect the PLC/HMI to our main network.
+
+I will assign Static IPs to ensure stable connections.
+
+I will set up Remote Access (VNC/RDP) so you can view the machine status from your office.
+
+I will double-check if the Drive data needs to be logged to a shared folder on the server."
+
+Safety Warning: Since you are new to a foundry (Acumelt handles molten iron!), never open an electrical panel on the machines yourself unless an electrical engineer is with you. High voltage is dangerous. Only touch the LAN ports and the Computer Keyboards.
