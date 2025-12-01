@@ -1,0 +1,142 @@
+By Gemini 3.0 = [Based on the documents provided, here is a comprehensive overview of how Acumelt Pvt. Ltd. manufactures ductile iron castings, from raw materials to final dispatch.
+
+Executive Summary
+
+Acumelt is a greenfield foundry located in Nikava (near Rajkot, Gujarat) with a production capacity of approximately 18,000 Metric tonnes per year. They specialize in ductile iron castings using a highly automated, "state-of-the-art" process designed to minimize human error and maximize safety.
+
+The Manufacturing Process (From Scratch to Dispatch)
+
+The process follows a closed-loop system involving sand preparation, metal melting, pouring, and finishing.
+
+1. Preparation: Sand and Cores
+
+Before metal can be poured, the molds must be created using treated sand.
+
+Sand Plant (Savelli): The facility uses a Savelli Sand Plant (24 MTPH capacity) to prepare the molding sand. It features a "Multicooler" to regulate temperature and a mixer with fully automatic additive supply. The system uses SCADA control for online testing, automatically correcting the sand batch or rejecting it before it reaches the molding line to ensure consistency.
+
+Core Making (Galaxy Machines): For castings that require internal hollow spaces, cores are created using Galaxy Machines. These allow for both horizontal and vertical parting with an automatic sand mixing and dosing system.
+
+2. Melting and Molding
+
+While the sand is being prepped, the metal is prepared.
+
+Melting (Inductotherm): The company uses an Inductotherm Duraline Tritrack Furnace for medium frequency induction melting. It has three crucibles (500kg capacity each) powered independently, capable of melting 3.2 Metric tonnes per hour.
+
+Molding (Sinto): The prepared sand goes to the Sinto FBO III A(N) molding machine. This is a high-speed machine capable of producing 120 molds per hour with precise dimensions (508x660mm).
+
+3. Pouring
+
+This is the critical junction where molten metal meets the sand mold.
+
+System (Shree Shakti Smart Autopour): Acumelt uses an automated pouring system (APS 500) that synchronizes with the molding machine. It utilizes a 4-axis movement control and performs:
+
+In-stream inoculation: Adding necessary chemical modifiers during the pour.
+
+Automated Control: It uses weight and time-based pouring to control the flow rate.
+
+Smart Features: It monitors temperature online and will automatically skip pouring if a "bad mold" is detected.
+
+4. Cooling and Shakeout
+
+After pouring, the molds undergo cooling.
+
+The castings are separated from the sand (Shakeout).
+
+Sand Loop: The used sand is returned to the Sand Plant for recycling/reconditioning.
+
+5. Finishing (Shotblasting & Fettling)
+
+Once the metal has solidified and sand is removed, the rough casting is cleaned.
+
+Shotblasting (Gostol TST): The castings are sent through a Gostol TST VKP continuous hanger type machine. Three turbines blast the castings with abrasive material at high velocity (80m/s) to clean the surface.
+
+Fettling & Degating: Excess metal (gates and risers) is removed, and the casting is ground to its final shape.
+
+6. Quality Control (Testing)
+
+Acumelt employs rigorous testing throughout the process using high-precision equipment:
+
+Chemical Analysis: Using Ametek SpectroMaxX to test for 24 distinct elements to ensure the metal grade is correct.
+
+Microstructure: Using an Olympus GX53F Microscope to analyze nodule count and pearlite/ferrite distribution.
+
+Physical Testing: Using FIE Machines to test tensile strength and hardness (Brinell tester).
+
+Sand Testing: Using Versatile equipment to ensure sand moisture, permeability, and strength are within limits.
+
+7. Dispatch
+
+Once the castings pass inspection, they are ready for dispatch. The facility is located near the Rajkot Kalawad Highway, providing good logistical access.
+
+Environmental & Safety Note
+
+The entire process is supported by environmental controls:
+
+Dust Extraction (Neoairtech): Filters dust from the sand plant and shotblasting areas.
+
+Fume Extraction (Techflow): Captures fumes from the melting furnace to ensure emissions remain below 50 mg/m3.]
+
+
+by gemini=[Based on the detailed information regarding Acumelt's infrastructure and manufacturing capabilities, here is the end-to-end process flow for how their ductile iron castings are made, from raw materials to the final, quality-checked product.
+
+Acumelt is a greenfield foundry based in Rajkot, involved in manufacturing **ductile iron castings**. They are **IATF 16949 Certified**, and their facility has a melting capacity of approximately **18,000 Metric tonnes per year**.
+
+The manufacturing process follows a sequence of key stages:
+
+### I. Preparation: Sand and Core Making
+
+This stage prepares the necessary components (sand mold and internal cores) that will form the final casting shape.
+
+1.  **Sand Plant Preparation:**
+    * Molding sand is prepared by a **Multicooler**, which cools the sand down to ambient temperature plus 5°C and facilitates early bentonite activation.
+    * A **Sand Mixer** provides a fully automatic supply of additives.
+    * **Online Sand Testing** is performed to automatically correct or reject batches *before* they proceed to molding, ensuring quality control from the very start. The plant has a capacity of **24 MTPH** (Metric Tonnes Per Hour).
+2.  **Core Making:**
+    * Internal cavities of the casting are formed by cores, which are produced using **Galaxy Machines**.
+    * These machines feature both Universal (Horizontal + Vertical) and Vertical Parting, with a **10kg shooting capacity** and an automatic sand mixing and dosing system.
+
+### II. Melting and Chemical Analysis
+
+1.  **Melting:**
+    * Raw materials are melted using an **Inductotherm Duraline Tritrack Furnace** which utilizes medium frequency induction melting.
+    * The system has **three crucibles** (500kg capacity each) powered independently, a **1650Kw Converter Capacity**, and a total melting capacity of **3.2 MTPH**.
+2.  **Chemical Analysis (Quality Check 1):**
+    * The molten metal's chemical composition is verified using an **Ametek SpectroMaxX**.
+    * This equipment analyzes **24 Elements** and includes easy auto-calibration and auto-fault diagnosis. This step ensures the metal's chemistry is correct for producing the desired grade of ductile iron.
+
+### III. Molding and Pouring
+
+1.  **Molding:**
+    * Molds are produced at a high rate using a **Sinto FBO III A(N)** machine, which can produce **120 molds per hour**.
+    * The mold size is specified, and the maximum pouring weight per mold is **50 Kgs***.
+2.  **Pouring:**
+    * Molten metal is poured into the molds using a precision **Shree Shakti Smart Autopour APS 500** system.
+    * **Inoculation** (a critical process in ductile iron to form spherical graphite nodules) is performed with **Instream weight-based Inoculation** using two inoculants.
+    * The system ensures control through **Weight + Time based metal pouring**, **4 axis movement control**, and **online temperature monitoring**.
+    * Pouring is **synchronized with molding** and uses a **closed loop with Sinto** to **skip pouring in a bad mold**. The system utilizes a self-learning algorithm for 99 recipes.
+
+### IV. Post-Casting and Finishing
+
+1.  **Cooling and Shakeout:**
+    * The casting solidifies within the mold. After solidification, the casting is removed from the sand (shakeout).
+2.  **Shotblasting (Cleaning):**
+    * The castings are cleaned using a **Gostol TST VKP 1200×1600 continuous hanger type machine**.
+    * This machine uses **3 Turbines** for better shotblasting coverage, high shot velocity (**80m/s**), and has a **1 metric ton hanger capacity**.
+
+### V. Quality Control (Final Inspection) and Dispatch
+
+After cleaning, the final quality of the casting is verified through extensive testing before it is approved for dispatch.
+
+* **Microstructure Analysis:** An **Olympus GX53F Microscope** is used to analyze the cast iron module for critical characteristics, including **Nodule count, size, type, and distribution**, as well as **Pearlite/Ferrite distribution**.
+* **Physical Testing:** **FIE Machines** are used for mechanical property testing:
+    * **Brinell Hardness** (using Model: B 3000-PC).
+    * **Electronic Universal Testing** for properties like **Tensile strength** and **Compressibility** (using Model: UTES HGFL 40, Capacity 400kN).
+* **Sand Testing:** Dedicated versatile equipment is used to check sand properties like **Compactibility, Moisture, Permeability, Green Compression Strength**, and **Grain Size Distribution**.
+
+### VI. Environment & Safety
+
+Throughout the process, Acumelt maintains strict compliance with government regulations for safety and environment.
+
+* **Dust Extraction:** A **Neoairtech Dust Extraction system** with cassette filters is used, featuring separate filtration systems for the Sand Plant, Sand Multicooler, and Shotblasting Machine. It guarantees an emission of **< 20 mg/Nm³**.
+* **Fume Extraction:** A **Techflow Enterprises** bag filtration system for fume treatment guarantees an emission of **< 50 mg/m³**. It also includes a **Spark Arrestor** to avoid fire hazards.]
+
