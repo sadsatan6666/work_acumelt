@@ -1,0 +1,147 @@
+Yes, you can absolutely build this. Since this is for production use within a Google Workspace organization (@productionname.com), you should structure this as an "Enterprise App" rather than a simple personal spreadsheet.
+
+Here is the exact architecture and workflow you need to build to ensure security, stability, and proper automation.
+
+1. The Security & Workspace Setup
+
+To meet your requirement that only users with @productionname.com can access this:
+
+Google AppSheet Security: Inside the AppSheet editor, go to Manage > Security > Domain Integration. You can restrict the app so that it requires a sign-in and strictly allows only users from your specific Google Workspace domain.
+
+Data Storage: Do not use "My Drive". Create a Shared Drive (formerly Team Drive) in Google Workspace. This ensures that if you (the creator) leave the company, the files and the app don't disappear. The files belong to the organization.
+
+2. The Architecture
+
+You cannot do this with AppSheet alone. AppSheet is the "Manager," and Google Apps Script is the "Worker."
+
+The Frontend (AppSheet): Users log in, select the files involved in the job (e.g., "Use Beta Host 1 for this project"), and click "Generate."
+
+The Database (Google Sheets): Stores the list of jobs and the Mapping Logic (A12 -> C45).
+
+The Engine (Google Apps Script): The code that actually opens the Excel files, moves the data, and saves the new file.
+
+3. Step-by-Step Implementation Plan
+Step A: Folder Structure (In Shared Drive)
+
+Create this folder hierarchy:
+
+/App_System (Contains the database sheet)
+
+/Templates (Contains your empty skeleton_host.xlsx)
+
+/Uploads (Where users drop beta_host.xlsx)
+
+/Completed_Files (Where the script saves the result)
+
+Step B: The Configuration Sheet (The Database)
+
+Create a Google Sheet named System_Controller. It needs two specific tabs:
+
+Tab 1: Job_Queue (This is what AppSheet sees)
+
+Columns: [Job ID], [User Email], [Skeleton Template], [Source File 1], [Source File 2], [Status], [Result Link], [Timestamp].
+
+Note: Using AppSheet, you can set [User Email] to automatically capture USEREMAIL(), ensuring you know exactly who ran the job.
+
+Tab 2: Mapping_Rules (This defines your logic)
+
+This allows you to change the rules later without rewriting code.
+
+Columns: [Skeleton_Cell], [Source_File_Label], [Source_Cell].
+
+Example Data:
+
+A12 | Source File 1 | A12
+
+B12 | Source File 2 | C45
+
+Step C: The AppSheet Application
+
+Connect AppSheet to the Job_Queue table.
+
+Create a Form View.
+
+The user selects the Source Files (you can use a "File" column type to let them upload beta_host files directly from their phone or computer).
+
+When the user hits "Save," a new row is added to the sheet with Status "Pending".
+
+Step D: The Automation Script (The Hard Part)
+
+Since your files are .xlsx, the script has to do a specific dance: Convert -> Edit -> Export.
+
+Open Extensions > Apps Script in your System_Controller sheet and use logic like this:
+
+code
+JavaScript
+download
+content_copy
+expand_less
+function processJobs() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var queueSheet = ss.getSheetByName("Job_Queue");
+  var mappingSheet = ss.getSheetByName("Mapping_Rules");
+  
+  // 1. Find Pending Jobs
+  var data = queueSheet.getDataRange().getValues();
+  // Loop through rows to find "Pending" status...
+  
+  // 2. The Conversion Process (Crucial for XLSX)
+  // Google Script cannot edit XLSX directly. 
+  // You must convert inputs to Google Sheets temporarily.
+  
+  var skeletonID = Drive.Files.copy({title: 'TempSkeleton'}, 'ID_OF_XLSX_TEMPLATE', {convert: true}).id;
+  var beta1ID = Drive.Files.copy({title: 'TempBeta1'}, 'ID_OF_UPLOADED_XLSX', {convert: true}).id;
+  
+  var skeletonSheet = SpreadsheetApp.openById(skeletonID).getSheets()[0];
+  var beta1Sheet = SpreadsheetApp.openById(beta1ID).getSheets()[0];
+  
+  // 3. The Mapping Loop
+  var mappings = mappingSheet.getDataRange().getValues();
+  
+  for (var i = 1; i < mappings.length; i++) {
+    var targetCell = mappings[i][0]; // A12
+    var sourceFile = mappings[i][1]; // Source File 1
+    var sourceCell = mappings[i][2]; // A12 or C45
+    
+    if (sourceFile == "Source File 1") {
+       var valueToCopy = beta1Sheet.getRange(sourceCell).getValue();
+       skeletonSheet.getRange(targetCell).setValue(valueToCopy);
+    }
+    // Repeat logic for File 2...
+  }
+  
+  // 4. Export back to XLSX (If required)
+  // You use the Drive API to convert the finished Google Sheet back to an XLSX blob 
+  // and save it to the "/Completed_Files" folder.
+  
+  // 5. Cleanup
+  // Delete the temporary Google Sheets (skeletonID, beta1ID) so your drive stays clean.
+  
+  // 6. Update AppSheet
+  // Write "Complete" and the URL of the new XLSX file back to the [Result Link] column.
+}
+4. Handling Images (The Warning)
+
+You mentioned "Sometimes images also."
+
+Scenario A: If the images are inside the cells using the =IMAGE("url") formula, the script above works perfectly.
+
+Scenario B: If the images are pasted "floating" on top of the grid (common in Excel), Google Apps Script struggles with this. It cannot easily say "Take the image floating near C45."
+
+Workaround: If you have floating images, you might need to name the images in Excel (Define Name) or rely on them being in fixed positions, but this is the most fragile part of the process.
+
+Summary of Workflow for a User
+
+Jane (jane@productionname.com) opens the AppSheet app on her phone or browser.
+
+She uploads beta_project_alpha.xlsx.
+
+She clicks "Generate Report."
+
+AppSheet adds a row to the Google Sheet.
+
+The Google Script wakes up, converts the files, maps A12 to C45, fills the skeleton, and saves it as a new Excel file.
+
+Jane sees the status change to "Complete" in the app and clicks the link to download the filled skeleton_host.xlsx.
+
+This creates a stable, secure, documented process suitable for a company environment.
